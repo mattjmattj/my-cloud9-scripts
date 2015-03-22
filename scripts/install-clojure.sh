@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function install_leiningen {
-	if ! which lein
+	if ! which lein >> /dev/null
 	then
 		echo "Installing leiningen"
 		wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -O /tmp/lein
@@ -13,7 +13,7 @@ function install_leiningen {
 }
 
 function install_clojure {
-	if ! -e $HOME/workspace/clojure
+	if ! [ -e $HOME/workspace/clojure ]
 	then
 		wget http://repo1.maven.org/maven2/org/clojure/clojure/1.6.0/clojure-1.6.0.zip -O /tmp/clojure-1.6.0.zip
 		cd /tmp && unzip clojure-1.6.0.zip && cd -
