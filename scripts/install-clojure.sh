@@ -21,5 +21,16 @@ function install_clojure {
 	fi
 }
 
+function install_aliases {
+	aliases=$HOME/.bash_aliases
+	echo "" >> $aliases
+	
+	if ! alias | grep clojure-repl=
+	then
+		echo "alias clojure-repl='java -cp $HOME/workspace/clojure/clojure-1.6.0.jar clojure.main'" >> $aliases
+	fi
+}
+
 install_leiningen
 install_clojure
+install_aliases
